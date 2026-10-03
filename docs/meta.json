@@ -1,0 +1,17 @@
+{
+  "title": "Оптимизация медленного API: до и после",
+  "kind": "Performance · SQL · Профилирование",
+  "tagline": "Кейс ускорения backend: N+1, индексы, агрегаты в SQL и кэш, с замерами на каждом шаге",
+  "accent": "#facc15",
+  "stack": ["Python 3.12", "FastAPI", "SQLAlchemy 2", "EXPLAIN", "SQL-индексы", "кэш", "pytest"],
+  "features": [
+    "Находим N+1 по счётчику SQL-запросов (X-DB-Queries)",
+    "Индексы по EXPLAIN QUERY PLAN, а не «на всякий случай»",
+    "JOIN и агрегаты в БД вместо циклов в Python",
+    "TTL-кэш для тяжёлых отчётов",
+    "Ответы всех версий сверяются: поведение не меняется"
+  ],
+  "metrics": [["697 → 14 мс", "топ товаров, без кэша"], ["301 → 1", "SQL-запросов"]],
+  "pages": [{"path": "/report", "name": "benchmark.png", "wait": 800, "height": 900, "full": true}],
+  "demo_title": "python scripts/demo.py — одна ручка на четырёх стадиях"
+}

@@ -1,0 +1,113 @@
+{
+  "dataset": {
+    "customers": 2000,
+    "orders": 20000,
+    "order_items": 59934
+  },
+  "runs": 9,
+  "database": "sqlite",
+  "endpoints": [
+    {
+      "name": "Последние 50 заказов",
+      "path": "/{v}/orders/recent?limit=50",
+      "stages": [
+        {
+          "stage": "Исходная версия",
+          "version": "v1",
+          "median_ms": 174.48,
+          "p95_ms": 188.26,
+          "queries": 101
+        },
+        {
+          "stage": "+ индексы",
+          "version": "v1",
+          "median_ms": 123.93,
+          "p95_ms": 136.78,
+          "queries": 101
+        },
+        {
+          "stage": "+ JOIN и агрегаты в SQL",
+          "version": "v2",
+          "median_ms": 2.0,
+          "p95_ms": 2.12,
+          "queries": 1
+        },
+        {
+          "stage": "+ кэш",
+          "version": "v3",
+          "median_ms": 1.24,
+          "p95_ms": 1.69,
+          "queries": 0
+        }
+      ]
+    },
+    {
+      "name": "Статистика клиента",
+      "path": "/{v}/customers/7/stats",
+      "stages": [
+        {
+          "stage": "Исходная версия",
+          "version": "v1",
+          "median_ms": 18.48,
+          "p95_ms": 19.55,
+          "queries": 13
+        },
+        {
+          "stage": "+ индексы",
+          "version": "v1",
+          "median_ms": 3.58,
+          "p95_ms": 4.29,
+          "queries": 13
+        },
+        {
+          "stage": "+ JOIN и агрегаты в SQL",
+          "version": "v2",
+          "median_ms": 1.73,
+          "p95_ms": 1.94,
+          "queries": 3
+        },
+        {
+          "stage": "+ кэш",
+          "version": "v3",
+          "median_ms": 0.91,
+          "p95_ms": 1.08,
+          "queries": 0
+        }
+      ]
+    },
+    {
+      "name": "Топ-10 товаров по выручке",
+      "path": "/{v}/reports/top-products?limit=10",
+      "stages": [
+        {
+          "stage": "Исходная версия",
+          "version": "v1",
+          "median_ms": 696.93,
+          "p95_ms": 737.87,
+          "queries": 301
+        },
+        {
+          "stage": "+ индексы",
+          "version": "v1",
+          "median_ms": 266.58,
+          "p95_ms": 298.49,
+          "queries": 301
+        },
+        {
+          "stage": "+ JOIN и агрегаты в SQL",
+          "version": "v2",
+          "median_ms": 14.41,
+          "p95_ms": 15.41,
+          "queries": 1
+        },
+        {
+          "stage": "+ кэш",
+          "version": "v3",
+          "median_ms": 0.96,
+          "p95_ms": 1.09,
+          "queries": 0
+        }
+      ]
+    }
+  ]
+}
